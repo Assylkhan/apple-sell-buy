@@ -6,10 +6,10 @@
 
 <struts>
 
-    <package name="Struts2SpringApp" extends="struts-default">
+    <constant name="struts.action.extension" value=""/>
+    <package name="default" extends="struts-default">
 
-
-        <action name="login" class="loginActionBean">
+        <action name="login" method="execute" class="loginActionBean">
             <result name="input">/LoginForm.jsp</result>
             <result name="success">/LoginSuccess.jsp</result>
             <result name="error">/LoginError.jsp</result>
