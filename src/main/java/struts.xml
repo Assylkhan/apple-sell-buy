@@ -7,9 +7,10 @@
 <struts>
 
     <constant name="struts.action.extension" value=""/>
+    <!--<constant name="struts.devMode" value="true" />-->
     <package name="default" extends="struts-default">
 
-        <action name="login" method="execute" class="loginActionBean">
+        <action name="login" class="com.milman.action.LoginAction">
             <result name="input">/LoginForm.jsp</result>
             <result name="success">/LoginSuccess.jsp</result>
             <result name="error">/LoginError.jsp</result>
