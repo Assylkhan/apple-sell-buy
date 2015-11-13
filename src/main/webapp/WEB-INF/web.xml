@@ -4,9 +4,10 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring/appContext.xml</param-value>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
     </context-param>
 
     <listener>
@@ -17,13 +18,12 @@
         <filter-name>DispatcherFilter</filter-name>
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
-
     <filter-mapping>
         <filter-name>DispatcherFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!--<welcome-file-list>-->
-        <!--<welcome-file>index.jsp</welcome-file>-->
-    <!--</welcome-file-list>-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

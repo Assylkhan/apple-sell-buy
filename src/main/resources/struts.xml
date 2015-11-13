@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.action.extension" value=""/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <!-- devMode is helpful when you want some extra logs for debugging -->
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" extends="struts-default">
+        <action name="login">
+            <result>/LoginForm.jsp</result>
+        </action>
+
+        <action name="loginProcess" class="com.milman.action.LoginAction">
+            <result name="success" type="redirect">/LoginSuccess.jsp</result>
+            <result name="error" type="redirect">/LoginError.jsp</result>
+        </action>
+
+    </package>
+</struts>

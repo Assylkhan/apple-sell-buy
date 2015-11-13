@@ -12,6 +12,7 @@
     <properties>
         <java-version>1.8</java-version>
         <org.springframework-version>4.2.2.RELEASE</org.springframework-version>
+        <struts-version>2.3.24.1</struts-version>
     </properties>
 
 
@@ -40,14 +41,14 @@
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
-            <version>2.3.24.1</version>
+            <version>${struts-version}</version>
         </dependency>
 
         <!--spring-struts integration lib-->
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-spring-plugin</artifactId>
-            <version>2.3.24.1</version>
+            <version>${struts-version}</version>
         </dependency>
 
         <dependency>

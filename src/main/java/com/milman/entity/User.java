@@ -1,6 +1,6 @@
 package com.milman.entity;
 
-public class User extends BaseEntity {
+public class User /*extends BaseEntity*/ {
     private String username;
     private String email;
     private String password;
