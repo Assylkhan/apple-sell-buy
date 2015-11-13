@@ -12,13 +12,17 @@
     <constant name="struts.devMode" value="true" />
 
     <package name="default" extends="struts-default">
+
+        <action name="">
+            <result>/WEB-INF/index.jsp</result>
+        </action>
         <action name="login">
-            <result>/LoginForm.jsp</result>
+            <result>/WEB-INF/view/LoginForm.jsp</result>
         </action>
 
         <action name="loginProcess" class="com.milman.action.LoginAction">
-            <result name="success" type="redirect">/LoginSuccess.jsp</result>
-            <result name="error" type="redirect">/LoginError.jsp</result>
+            <result name="success" type="dispatcher">/WEB-INF/view/LoginSuccess.jsp</result>
+            <result name="error" type="dispatcher">/WEB-INF/view/LoginError.jsp</result>
         </action>
 
     </package>
