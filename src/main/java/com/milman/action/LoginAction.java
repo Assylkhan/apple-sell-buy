@@ -6,7 +6,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class LoginAction extends ActionSupport  implements Preparable {
+public class LoginAction extends ActionSupport implements Preparable {
     //UserDao injected by spring context; This is cool !!
     @Autowired
     private UserDao userDao;

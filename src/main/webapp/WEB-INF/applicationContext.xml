@@ -10,6 +10,10 @@
         <property name="userDao" ref="userDao"/>
     </bean>
 
+    <bean id="profileActionBean" class="com.milman.action.ProfileAction">
+        <!--<property name="user" ref="user"/>-->
+    </bean>
+
     <bean id="userDao" class="com.milman.dataSource.UserDaoImpl"/>
 
     <bean id="user" class="com.milman.entity.User"/>

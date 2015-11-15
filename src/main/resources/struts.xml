@@ -21,9 +21,16 @@
         </action>
 
         <action name="loginProcess" class="com.milman.action.LoginAction">
-            <result name="success" type="dispatcher">/WEB-INF/view/LoginSuccess.jsp</result>
-            <result name="error" type="dispatcher">/WEB-INF/view/LoginError.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">profilePage</param>
+                <param name="user">user</param>
+            </result>
+            <result name="input">/WEB-INF/view/LoginForm.jsp</result>
         </action>
 
+        <action name="profilePage" class="com.milman.action.ProfileAction">
+            <result name="success">/WEB-INF/view/LoginSuccess.jsp</result>
+            <result name="input">/WEB-INF/view/LoginSuccess.jsp</result>
+        </action>
     </package>
 </struts>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -13,7 +14,7 @@
 
     <h2>Users Login</h2>
     <s:form action="loginProcess" method="execute">
-        <s:textfield label="Username" name="user.username" />
+        <s:textfield label="Username" name="user.username"/>
         <s:password label="Password" name="user.password" />
         <s:submit key="login"></s:submit>
     </s:form>

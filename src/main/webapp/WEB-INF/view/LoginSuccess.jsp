@@ -9,7 +9,9 @@
 </head>
 <body>
 <div align="center">
-    <h1>Welcome to apple buy sell</h1>
+    <h1>My profile</h1>
+    <p>name: <b>${user.username}</b></p>
+    <p>password: <b>${user.password}</b></p>
 </div>
 </body>
 </html>
