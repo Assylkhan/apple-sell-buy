@@ -30,10 +30,23 @@ public class LoginAction extends ActionSupport  implements Preparable {
     }
 
     public String execute() {
-        if (userDao.checkLogin(user)) {
+//        if (userDao.checkLogin(user)) {
+
             return SUCCESS;
+//        }
+
+//        return LOGIN;
+    }
+
+    @Override
+    public void validate() {
+        if (user.getUsername().length() == 0) {
+            addFieldError("user.username", "заполните поле");
         }
-        return ERROR;
+
+        if(user.getPassword().length() == 0) {
+            addFieldError("user.password", "заполните поле");
+        }
     }
 
     //This method will be called before any of Action method is invoked;

@@ -13,8 +13,8 @@
 
     <h2>Users Login</h2>
     <s:form action="loginProcess" method="execute">
-        <s:textfield label="Username" name="user.username"/>
-        <s:password label="Password" name="user.password"/>
+        <s:textfield label="Username" name="user.username" />
+        <s:password label="Password" name="user.password" />
         <s:submit key="login"></s:submit>
     </s:form>
 </div>
