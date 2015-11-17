@@ -23,7 +23,7 @@
         <action name="loginProcess" class="com.milman.action.LoginAction">
             <result name="success" type="redirectAction">
                 <param name="actionName">profilePage</param>
-                <param name="user">user</param>
+                <param name="user">${user}</param>
             </result>
             <result name="input">/WEB-INF/view/LoginForm.jsp</result>
         </action>
