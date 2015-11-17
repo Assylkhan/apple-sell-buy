@@ -7,6 +7,8 @@ public class Item extends BaseEntity implements Serializable {
     private String name;
     private String price;
     private Date publicationDate;
+    private String description;
+    private User user;
 
     public String getName() {
         return name;
@@ -30,5 +32,21 @@ public class Item extends BaseEntity implements Serializable {
 
     public void setPublicationDate(Date publicationDate) {
         this.publicationDate = publicationDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
