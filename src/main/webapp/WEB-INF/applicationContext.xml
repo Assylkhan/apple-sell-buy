@@ -11,7 +11,7 @@
     </bean>
 
     <bean id="profileActionBean" class="com.milman.action.ProfileAction">
-        <!--<property name="user" ref="user"/>-->
+        <property name="user" ref="user"/>
     </bean>
 
     <bean id="userDao" class="com.milman.dataSource.UserDaoImpl"/>

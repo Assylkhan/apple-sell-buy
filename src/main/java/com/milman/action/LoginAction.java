@@ -4,6 +4,7 @@ import com.milman.dataSource.UserDao;
 import com.milman.entity.User;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class LoginAction extends ActionSupport implements Preparable {
@@ -31,8 +32,8 @@ public class LoginAction extends ActionSupport implements Preparable {
 
     public String execute() {
 //        if (userDao.checkLogin(user)) {
-
-            return SUCCESS;
+        ServletActionContext.getRequest().setAttribute("flash.user", user);
+        return SUCCESS;
 //        }
 
 //        return LOGIN;
@@ -44,7 +45,10 @@ public class LoginAction extends ActionSupport implements Preparable {
             addFieldError("user.username", "заполните поле");
         }
 
-        if(user.getPassword().length() == 0) {
+        if (user.getUsername().equals("asik")) {
+            addFieldError("user.asik", "this is asik error");
+        }
+        if (user.getPassword().length() == 0) {
             addFieldError("user.password", "заполните поле");
         }
     }
