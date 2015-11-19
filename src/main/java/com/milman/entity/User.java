@@ -2,9 +2,10 @@ package com.milman.entity;
 
 import java.util.List;
 
-public class User /*extends BaseEntity*/ {
+public class User extends BaseEntity {
     private String username;
     private String email;
+    private String identityCard;
     private String password;
     private List<Item> items;
 
@@ -22,6 +23,14 @@ public class User /*extends BaseEntity*/ {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getIdentityCard() {
+        return identityCard;
+    }
+
+    public void setIdentityCard(String identityCard) {
+        this.identityCard = identityCard;
     }
 
     public String getPassword() {
