@@ -11,7 +11,8 @@
 <body>
 <div align="center">
     <h1>My profile</h1>
-    <p>name: <b><s:property value="user.username"/></b></p>
+    <p>email: <b><s:property value="user.email"/></b></p>
+    <p>username: <b><s:property value="user.username"/></b></p>
     <p>password: <b>${user != null ? user.password : ""}</b></p>
 </div>
 </body>

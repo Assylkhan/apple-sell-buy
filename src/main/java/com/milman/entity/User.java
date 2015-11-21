@@ -1,5 +1,6 @@
 package com.milman.entity;
 
+import java.sql.Date;
 import java.util.List;
 
 public class User extends BaseEntity {
@@ -7,6 +8,10 @@ public class User extends BaseEntity {
     private String email;
     private String identityCard;
     private String password;
+    private Date registrationDate;
+    private String phoneNumber;
+    private Byte rating;
+    private List<String> feedbacks;
     private List<Item> items;
 
     public String getUsername() {
@@ -39,6 +44,38 @@ public class User extends BaseEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Byte getRating() {
+        return rating;
+    }
+
+    public void setRating(Byte rating) {
+        this.rating = rating;
+    }
+
+    public List<String> getFeedbacks() {
+        return feedbacks;
+    }
+
+    public void setFeedbacks(List<String> feedbacks) {
+        this.feedbacks = feedbacks;
     }
 
     public List<Item> getItems() {

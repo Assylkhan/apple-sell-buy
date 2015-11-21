@@ -2,12 +2,15 @@ package com.milman.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 public class Item extends BaseEntity implements Serializable {
     private String name;
     private String price;
     private Date publicationDate;
     private String description;
+    private List<MediaForItem> mediaForItems;
+    private Byte viewsAmount;
     private User user;
 
     public String getName() {
@@ -40,6 +43,22 @@ public class Item extends BaseEntity implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<MediaForItem> getMediaForItems() {
+        return mediaForItems;
+    }
+
+    public void setMediaForItems(List<MediaForItem> mediaForItems) {
+        this.mediaForItems = mediaForItems;
+    }
+
+    public Byte getViewsAmount() {
+        return viewsAmount;
+    }
+
+    public void setViewsAmount(Byte viewsAmount) {
+        this.viewsAmount = viewsAmount;
     }
 
     public User getUser() {

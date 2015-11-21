@@ -7,7 +7,7 @@ import com.opensymphony.xwork2.Preparable;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class LoginAction extends ActionSupport implements Preparable {
+public class RegistrationAction extends ActionSupport implements Preparable {
     //UserDao injected by spring context; This is cool !!
     @Autowired
     private UserDao userDao;
@@ -32,7 +32,7 @@ public class LoginAction extends ActionSupport implements Preparable {
 
     public String execute() {
 //        if (userDao.checkLogin(user)) {
-        User userFromDb = userDao.findByCredentials(user.getEmail(), user.getPassword());
+        User userFromDb = userDao.insert(user);
         ServletActionContext.getRequest().setAttribute("flash.user", userFromDb);
         return SUCCESS;
 //        }

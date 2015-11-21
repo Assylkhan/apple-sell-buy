@@ -5,8 +5,21 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.milman" />
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/APPLE-SELL-BUY"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="admin"/>
+    </bean>
+
+    <context:component-scan base-package="com.milman"/>
     <bean id="loginActionBean" class="com.milman.action.LoginAction">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <bean id="registerActionBean" class="com.milman.action.RegistrationAction">
         <property name="userDao" ref="userDao"/>
     </bean>
 
@@ -14,7 +27,9 @@
         <property name="user" ref="user"/>
     </bean>
 
-    <bean id="userDao" class="com.milman.dataSource.PostgresImpl.UserDaoImpl"/>
+    <bean id="userDao" class="com.milman.dataSource.PostgresImpl.UserDaoImpl">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
 
     <bean id="user" class="com.milman.entity.User"/>
 
