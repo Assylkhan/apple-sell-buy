@@ -43,14 +43,15 @@ public class RegistrationAction extends ActionSupport implements Preparable {
     @Override
     public void validate() {
         if (user.getUsername().length() == 0) {
-            addFieldError("user.username", "заполните поле");
+            addActionError("заполните имя пользователя");
         }
 
-        if (user.getUsername().equals("asik")) {
-            addFieldError("user.asik", "this is asik error");
+        if (user.getEmail().length() == 0) {
+            addActionError("заполните email");
         }
+
         if (user.getPassword().length() == 0) {
-            addFieldError("user.password", "заполните поле");
+            addActionError("заполните пароль");
         }
     }
 

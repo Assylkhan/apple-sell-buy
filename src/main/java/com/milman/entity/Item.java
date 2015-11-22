@@ -9,7 +9,7 @@ public class Item extends BaseEntity implements Serializable {
     private String price;
     private Date publicationDate;
     private String description;
-    private List<MediaForItem> mediaForItems;
+    private List<Media> mediasForItem;
     private Byte viewsAmount;
     private User user;
 
@@ -45,12 +45,12 @@ public class Item extends BaseEntity implements Serializable {
         this.description = description;
     }
 
-    public List<MediaForItem> getMediaForItems() {
-        return mediaForItems;
+    public List<Media> getMediasForItem() {
+        return mediasForItem;
     }
 
-    public void setMediaForItems(List<MediaForItem> mediaForItems) {
-        this.mediaForItems = mediaForItems;
+    public void setMediasForItem(List<Media> mediasForItem) {
+        this.mediasForItem = mediasForItem;
     }
 
     public Byte getViewsAmount() {

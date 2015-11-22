@@ -7,6 +7,7 @@ public class User extends BaseEntity {
     private String username;
     private String email;
     private String identityCard;
+    private List<String> identityCardImages;
     private String password;
     private Date registrationDate;
     private String phoneNumber;
@@ -36,6 +37,14 @@ public class User extends BaseEntity {
 
     public void setIdentityCard(String identityCard) {
         this.identityCard = identityCard;
+    }
+
+    public List<String> getIdentityCardImages() {
+        return identityCardImages;
+    }
+
+    public void setIdentityCardImages(List<String> identityCardImages) {
+        this.identityCardImages = identityCardImages;
     }
 
     public String getPassword() {
@@ -91,7 +100,14 @@ public class User extends BaseEntity {
         return "User{" +
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
+                ", identityCard='" + identityCard + '\'' +
+                ", identityCardImages=" + identityCardImages +
                 ", password='" + password + '\'' +
+                ", registrationDate=" + registrationDate +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", rating=" + rating +
+                ", feedbacks=" + feedbacks +
+                ", items=" + items +
                 '}';
     }
 }

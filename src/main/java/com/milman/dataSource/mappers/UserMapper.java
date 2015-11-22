@@ -1,4 +1,4 @@
-package com.milman.dataSource;
+package com.milman.dataSource.mappers;
 
 import com.milman.entity.User;
 import org.springframework.jdbc.core.RowMapper;

@@ -12,10 +12,10 @@
   <h1>Spring and Struts Integration</h1>
 
   <h2>Registration</h2>
+  <s:actionerror/>
   <s:form action="registrationProcess" method="execute">
     <s:textfield label="username" name="user.username"/>
     <s:textfield label="email" name="user.email"/>
-    <b><s:fielderror value="user.asik"/></b>
     <s:password label="password" name="user.password" />
     <s:submit key="register"></s:submit>
   </s:form>

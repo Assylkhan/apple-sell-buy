@@ -13,10 +13,12 @@
     <h1>Spring and Struts Integration</h1>
 
     <h2>Users Login</h2>
+
+    <s:actionerror/>
+
     <s:form action="loginProcess" method="execute">
         <s:textfield label="email" name="user.email"/>
-        <b><s:fielderror value="user.asik"/></b>
-        <s:password label="password" name="user.password" />
+        <s:password label="password" name="user.password"/>
         <s:submit key="login"></s:submit>
     </s:form>
 </div>

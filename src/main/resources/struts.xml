@@ -41,5 +41,17 @@
             </result>
             <result name="input">/WEB-INF/view/RegisterForm.jsp</result>
         </action>
+
+        <action name="postItem" class="com.milman.action.PostItemAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">userItems</param>
+            </result>
+        </action>
+
+        <action name="userItems" class="com.milman.action.UserItemsAction">
+            <result name="success">
+                /WEB-INF/view
+            </result>
+        </action>
     </package>
 </struts>

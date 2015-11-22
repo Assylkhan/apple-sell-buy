@@ -7,7 +7,7 @@ public interface UserDao {
 
     public User findById(Long id);
 
-    public User findByCredentials(String email, String password);
+    public User findByEmail(String email);
 
     public User insert(User user);
 }

@@ -32,7 +32,7 @@ public class LoginAction extends ActionSupport implements Preparable {
 
     public String execute() {
 //        if (userDao.checkLogin(user)) {
-        User userFromDb = userDao.findByCredentials(user.getEmail(), user.getPassword());
+        User userFromDb = userDao.findByEmail(user.getEmail());
         ServletActionContext.getRequest().setAttribute("flash.user", userFromDb);
         return SUCCESS;
 //        }
@@ -42,15 +42,14 @@ public class LoginAction extends ActionSupport implements Preparable {
 
     @Override
     public void validate() {
-        if (user.getUsername().length() == 0) {
-            addFieldError("user.username", "заполните поле");
+        if (user.getEmail().length() == 0) {
+            addActionError("Заполните имя пользователя");
+//            addFieldError("user.username", "заполните поле");
         }
 
-        if (user.getUsername().equals("asik")) {
-            addFieldError("user.asik", "this is asik error");
-        }
         if (user.getPassword().length() == 0) {
-            addFieldError("user.password", "заполните поле");
+            addActionError("Заполните пароль");
+//            addFieldError("user.password", "заполните поле");
         }
     }
 
