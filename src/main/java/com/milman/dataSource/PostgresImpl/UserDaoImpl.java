@@ -32,6 +32,13 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
     }
 
     @Override
+    public User findByCredentials(String email, String password) {
+        final String SQL = "SELECT * FROM USERS WHERE EMAIL=? AND PASSWORD=?";
+        return getJdbcTemplate().queryForObject(
+                SQL, new Object[]{email, password}, new UserMapper());
+    }
+
+    @Override
     public User insert(User user) {
         final String SQL = "INSERT INTO USERS (username, email, password) " +
                 "VALUES (?, ?, ?)";

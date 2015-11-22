@@ -27,6 +27,12 @@
             <result name="input">/WEB-INF/view/LoginForm.jsp</result>
         </action>
 
+        <action name="logout" class="com.milman.action.LogoutAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">login</param>
+            </result>
+        </action>
+
         <action name="profilePage" class="com.milman.action.ProfileAction" method="execute">
             <result name="success">/WEB-INF/view/LoginSuccess.jsp</result>
             <result name="input">/WEB-INF/view/LoginSuccess.jsp</result>

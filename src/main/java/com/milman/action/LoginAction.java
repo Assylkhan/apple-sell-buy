@@ -2,6 +2,7 @@ package com.milman.action;
 
 import com.milman.dataSource.UserDao;
 import com.milman.entity.User;
+import com.milman.util.HashGenerator;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import org.apache.struts2.ServletActionContext;
@@ -32,8 +33,9 @@ public class LoginAction extends ActionSupport implements Preparable {
 
     public String execute() {
 //        if (userDao.checkLogin(user)) {
-        User userFromDb = userDao.findByEmail(user.getEmail());
-        ServletActionContext.getRequest().setAttribute("flash.user", userFromDb);
+        String generatedPassword = HashGenerator.passwordToHash(user.getPassword());
+        User userFromDb = userDao.findByCredentials(user.getEmail(), generatedPassword);
+        ServletActionContext.getRequest().getSession().setAttribute("user", userFromDb);
         return SUCCESS;
 //        }
 

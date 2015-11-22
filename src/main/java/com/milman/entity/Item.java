@@ -8,6 +8,7 @@ public class Item extends BaseEntity implements Serializable {
     private String name;
     private String price;
     private Date publicationDate;
+    private String region;
     private String description;
     private List<Media> mediasForItem;
     private Byte viewsAmount;
@@ -35,6 +36,14 @@ public class Item extends BaseEntity implements Serializable {
 
     public void setPublicationDate(Date publicationDate) {
         this.publicationDate = publicationDate;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getDescription() {

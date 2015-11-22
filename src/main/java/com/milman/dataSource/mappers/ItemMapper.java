@@ -15,6 +15,7 @@ public class ItemMapper implements RowMapper<Item> {
         item.setDescription(resultSet.getString("description"));
         item.setPrice(resultSet.getString("price"));
         item.setPublicationDate(resultSet.getDate("publication_date"));
+        item.setRegion(resultSet.getString("region"));
         item.setViewsAmount(resultSet.getByte("views_amount"));
         return item;
     }

@@ -19,6 +19,9 @@
         <property name="userDao" ref="userDao"/>
     </bean>
 
+    <bean id="logoutActionBean" class="com.milman.action.LogoutAction">
+    </bean>
+
     <bean id="registerActionBean" class="com.milman.action.RegistrationAction">
         <property name="userDao" ref="userDao"/>
     </bean>
@@ -27,7 +30,15 @@
         <property name="user" ref="user"/>
     </bean>
 
+    <bean id="userItemsActionBean" class="com.milman.action.UserItemsAction">
+
+    </bean>
+
     <bean id="userDao" class="com.milman.dataSource.PostgresImpl.UserDaoImpl">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <bean id="itemDao" class="com.milman.dataSource.PostgresImpl.ItemDaoImpl">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
 
