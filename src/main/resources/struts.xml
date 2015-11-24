@@ -22,7 +22,7 @@
 
         <action name="loginProcess" class="com.milman.action.LoginAction">
             <result name="success" type="redirectAction">
-                <param name="actionName">profilePage</param>
+                <param name="actionName">userItems</param>
             </result>
             <result name="input">/WEB-INF/view/LoginForm.jsp</result>
         </action>
@@ -56,7 +56,7 @@
 
         <action name="userItems" class="com.milman.action.UserItemsAction">
             <result name="success">
-                /WEB-INF/view
+                /WEB-INF/view/userItems.jsp
             </result>
         </action>
     </package>

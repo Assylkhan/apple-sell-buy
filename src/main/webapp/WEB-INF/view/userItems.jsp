@@ -15,7 +15,10 @@
         <div class="col-md-3"><img src="<c:url value='/static/image/macBook.jpg'/>"></div>
         <div class="col-md-6">${user.item.name},
         ${user.item.region}, ${user.item.publicationDate}</div>
-        <div class="col-md-3">${user.price}$</div>
+        <div class="col-md-3">
+            <div class="row">${user.price}$</div>
+            <div class="row"><a href="">open</a></div>
+        </div>
     </li>
 </ul>
 </body>

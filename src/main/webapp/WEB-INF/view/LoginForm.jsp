@@ -10,7 +10,7 @@
         <s:actionerror/>
 
         <s:form action="loginProcess" method="execute">
-            <s:textfield label="email" name="user.email"/>
+            <s:textfield class="form-control" label="email" name="user.email"/>
             <s:password label="password" name="user.password"/>
             <s:submit key="login"></s:submit>
         </s:form>
