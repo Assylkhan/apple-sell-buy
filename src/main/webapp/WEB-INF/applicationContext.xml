@@ -31,7 +31,11 @@
     </bean>
 
     <bean id="userItemsActionBean" class="com.milman.action.UserItemsAction">
+        <property name="itemDao" ref="itemDao"/>
+    </bean>
 
+    <bean id="userItemActionBean" class="com.milman.action.UserItemAction">
+        <property name="itemDao" ref="itemDao"/>
     </bean>
 
     <bean id="userDao" class="com.milman.dataSource.PostgresImpl.UserDaoImpl">

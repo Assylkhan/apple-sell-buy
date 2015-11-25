@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <html>
 <head>
@@ -11,15 +12,28 @@
 </head>
 <body>
 <ul>
-    <li class="row">
-        <div class="col-md-3"><img src="<c:url value='/static/image/macBook.jpg'/>"></div>
-        <div class="col-md-6">${user.item.name},
-        ${user.item.region}, ${user.item.publicationDate}</div>
-        <div class="col-md-3">
-            <div class="row">${user.price}$</div>
-            <div class="row"><a href="">open</a></div>
-        </div>
-    </li>
+    <c:forEach items="${items}" var="item">
+        <li class="row" style="background: greenyellow;">
+            <div class="col-md-3">
+                <img src="<c:url value='/static/image/macBook.jpg'/>">
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <s:url value="userItem.action">
+                        <s:param name="id" value="${item.id}"/>
+                    </s:url>
+                    <a href="<c:url value='/item'/> ">
+                            ${item.name}
+                    </a>
+                </div>
+                <div class="row">${item.region}</div>
+                <div class="row">${item.publicationDate}</div>
+            </div>
+            <div class="col-md-3">
+                <div class="row">${item.price}$</div>
+            </div>
+        </li>
+    </c:forEach>
 </ul>
 </body>
 </html>

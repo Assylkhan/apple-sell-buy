@@ -59,5 +59,11 @@
                 /WEB-INF/view/userItems.jsp
             </result>
         </action>
+
+        <action name="userItem" class="com.milman.action.UserItemAction">
+            <result name="success">
+                /WEB-INF/view/userItem.jsp
+            </result>
+        </action>
     </package>
 </struts>

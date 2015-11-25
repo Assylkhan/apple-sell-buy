@@ -8,6 +8,7 @@
 
     <p>description: <b><s:property value="item.description"/></b></p>
 
+
     <a class="btn btn-default" href="">change</a>
   </div>
 </t:genericPage>
