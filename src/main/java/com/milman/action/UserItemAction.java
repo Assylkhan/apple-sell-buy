@@ -36,6 +36,8 @@ public class UserItemAction  extends ActionSupport implements Preparable {
     public String execute() {
         User currentUser = (User)
                 ServletActionContext.getContext().getSession().get("user");
+        String id = ServletActionContext.getRequest().getParameter("id");
+        System.out.println(id);
         Long itemId = Long.valueOf(ServletActionContext.getRequest().getParameter("id"));
         if (currentUser != null) {
             setItem(itemDao.fetchById(itemId));

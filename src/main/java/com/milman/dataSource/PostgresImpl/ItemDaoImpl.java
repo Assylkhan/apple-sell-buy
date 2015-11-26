@@ -74,7 +74,8 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
 
     @Override
     public Item fetchById(Long id) {
-        return null;
+        final String SQL = "SELECT * FROM ITEMS WHERE id=?";
+        return getJdbcTemplate().queryForObject(SQL, new Object[]{id}, new ItemMapper());
     }
 
     @Override

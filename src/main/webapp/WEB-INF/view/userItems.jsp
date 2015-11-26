@@ -19,12 +19,12 @@
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    <s:url value="userItem" var="userItemAction">
-                        <s:param name="id" value="%{item.id}"/>
+                    <s:url id="userItemAction" action="userItem">
+                        <s:param name="id">${item.id}</s:param>
                     </s:url>
-                    <a href="<s:property value="#userItemAction"/>">
-                            ${item.name}
-                    </a>
+                    <s:a href="%{userItemAction}">
+                        ${item.name}
+                    </s:a>
                 </div>
                 <div class="row">${item.region}</div>
                 <div class="row">${item.publicationDate}</div>

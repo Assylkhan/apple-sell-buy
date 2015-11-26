@@ -50,6 +50,9 @@
             <result name="input">/WEB-INF/view/RegisterForm.jsp</result>
         </action>
 
+        <action name="fillItem">
+            <result>/WEB-INF/view/</result>
+        </action>
         <action name="postItem" class="com.milman.action.PostItemAction">
             <result name="success" type="redirectAction">
                 <param name="actionName">userItems</param>
@@ -62,8 +65,7 @@
             </result>
         </action>
 
-        <action name="userItem/*" class="com.milman.action.UserItemAction">
-            <param name="id">{1}</param>
+        <action name="userItem" class="com.milman.action.UserItemAction">
             <result name="success">
                 /WEB-INF/view/userItem.jsp
             </result>

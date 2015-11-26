@@ -20,6 +20,9 @@
                 <c:choose>
                     <c:when test="${not empty sessionScope.user}">
                         <li>
+                            <a href="<c:url value='/postItem'/>">create item</a>
+                        </li>
+                        <li>
                             <a href="<c:url value='/userItems'/>">
                                 my items
                             </a>

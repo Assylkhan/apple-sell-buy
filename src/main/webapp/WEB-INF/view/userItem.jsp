@@ -8,7 +8,12 @@
 
     <p>description: <b><s:property value="item.description"/></b></p>
 
-
+    <%--<s:url id="userItemAction" action="userItem">--%>
+      <%--<s:param name="id">${item.id}</s:param>--%>
+    <%--</s:url>--%>
+    <%--<s:a href="%{userItemAction}">--%>
+      <%--${item.name}--%>
+    <%--</s:a>--%>
     <a class="btn btn-default" href="">change</a>
   </div>
 </t:genericPage>
