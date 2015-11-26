@@ -11,9 +11,9 @@ public class MediaMapper implements RowMapper<Media> {
     @Override
     public Media mapRow(ResultSet resultSet, int i) throws SQLException {
         Media media = new Media();
-        media.setId(resultSet.getLong("media_for_item.id"));
+        media.setId(resultSet.getLong("id"));
         media.setMediaType(
-                Media.MediaType.valueOf(resultSet.getString("media_type.value")));
+                Media.MediaType.typeFromInt(resultSet.getInt("media_type_id")));
         media.setDescription(resultSet.getString("description"));
         media.setMediaRef(resultSet.getString("media_ref"));
         return media;

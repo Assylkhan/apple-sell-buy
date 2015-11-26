@@ -85,9 +85,7 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
     @Override
     public List<Item> fetchListByUserId(Long userId) {
         final String SQL = "SELECT * FROM ITEMS WHERE user_id=?";
-        final String MEDIAS_SQL = "SELECT * FROM media_for_item"+
-                " INNER JOIN MEDIA_TYPE ON MEDIA_TYPE.ID=MEDIA_FOR_ITEM.MEDIA_TYPE_ID " +
-                " WHERE item_id=?";
+        final String MEDIAS_SQL = "SELECT * FROM media_for_item WHERE item_id=?";
         List<Item> items = getJdbcTemplate().query(SQL, new Object[]{userId}, new ItemMapper());
         for (Item item : items){
             item.setMediasForItem(getJdbcTemplate().query(MEDIAS_SQL, new Object[]{item.getId()}, new MediaMapper()));

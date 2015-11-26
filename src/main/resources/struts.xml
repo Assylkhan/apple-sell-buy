@@ -6,6 +6,8 @@
 
 <struts>
 
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
     <constant name="struts.action.extension" value=""/>
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <!-- devMode is helpful when you want some extra logs for debugging -->
@@ -60,7 +62,8 @@
             </result>
         </action>
 
-        <action name="userItem" class="com.milman.action.UserItemAction">
+        <action name="userItem/*" class="com.milman.action.UserItemAction">
+            <param name="id">{1}</param>
             <result name="success">
                 /WEB-INF/view/userItem.jsp
             </result>
