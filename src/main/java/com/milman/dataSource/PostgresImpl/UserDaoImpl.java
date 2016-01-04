@@ -11,6 +11,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 
@@ -34,8 +35,11 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
     @Override
     public User findByCredentials(String email, String password) {
         final String SQL = "SELECT * FROM USERS WHERE EMAIL=? AND PASSWORD=?";
-        return getJdbcTemplate().queryForObject(
+        List<User> users = getJdbcTemplate().query(
                 SQL, new Object[]{email, password}, new UserMapper());
+        if (users.size() == 0)
+            return null;
+        return users.get(0);
     }
 
     @Override

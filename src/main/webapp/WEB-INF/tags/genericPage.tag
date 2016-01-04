@@ -8,44 +8,43 @@
     <link rel="stylesheet" href='<c:url value="/webjars/bootstrap/3.3.5/css/bootstrap.css"/>'>
     <script src='<c:url value="/webjars/jquery/2.1.4/jquery.js"/>'></script>
     <script src='<c:url value="/webjars/bootstrap/3.3.5/js/bootstrap.js"/>'></script>
+    <script type="text/javascript" src='<c:url value="/static/javascript/application.js"/>'></script>
     <link rel="stylesheet" href="/static/css/main.css">
     <%--<link rel="icon" href='<c:url value="/static/image/logoTitle.ico"/>' type="image/x-icon">--%>
     <title>${title}</title>
 </head>
 <body>
-<div>
-    <header class="header">
-        <div class="navbar">
-            <ul class="list-unstyled pull-right">
-                <c:choose>
-                    <c:when test="${not empty sessionScope.user}">
-                        <li>
-                            <a href="<c:url value='/postItem'/>">create item</a>
-                        </li>
-                        <li>
-                            <a href="<c:url value='/userItems'/>">
-                                my items
-                            </a>
-                        </li>
-                        <li><a href="<c:url value='/logout'/>">logout</a></li>
-                    </c:when>
-                    <c:otherwise>
-                        <li><a href="<c:url value='/login'/>">login</a></li>
-                    </c:otherwise>
-                </c:choose>
-            </ul>
-        </div>
-    </header>
-
-    <div id="wrapper" class="row">
-        <div class="content">
-            <jsp:doBody/>
-        </div>
+<header class="header">
+    <div class="navbar">
+        <ul class="list-unstyled pull-right">
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <li>
+                        <a href="<c:url value='/fillItem'/>">new item</a>
+                    </li>
+                    <li>
+                        <a href="<c:url value='/userItems'/>">
+                            my items
+                        </a>
+                    </li>
+                    <li><a href="<c:url value='/logout'/>">logout</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="<c:url value='/login'/>">login</a></li>
+                </c:otherwise>
+            </c:choose>
+        </ul>
     </div>
-    <%--<div class="push"></div>--%>
-    <footer class="footer">
+</header>
 
-    </footer>
+<div id="wrapper" class="row">
+    <div class="content">
+        <jsp:doBody/>
+    </div>
 </div>
+<%--<div class="push"></div>--%>
+<footer class="footer">
+
+</footer>
 </body>
 </html>

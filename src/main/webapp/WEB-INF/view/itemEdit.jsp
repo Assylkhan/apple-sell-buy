@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:genericPage title="login">
+<t:genericPage title="edit item">
   <div align="center">
     <h1>Spring and Struts Integration</h1>
 

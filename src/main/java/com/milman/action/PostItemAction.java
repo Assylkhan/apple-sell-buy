@@ -3,11 +3,14 @@ package com.milman.action;
 import com.milman.dataSource.ItemDao;
 import com.milman.dataSource.UserDao;
 import com.milman.entity.Item;
+import com.milman.entity.Media;
 import com.milman.entity.User;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class PostItemAction extends ActionSupport implements Preparable {
     //UserDao injected by spring context; This is cool !!
@@ -32,15 +35,26 @@ public class PostItemAction extends ActionSupport implements Preparable {
         return item;
     }
 
+    private List<Media> medias;
+
+    public List<Media> getMedias() {
+        return medias;
+    }
+
+    public void setMedias(List<Media> medias) {
+        this.medias = medias;
+    }
+
     public String execute() {
 //        if (itemDao.checkLogin(item)) {
 //        )
+        User user = (User) ServletActionContext.getRequest()
+                    .getSession().getAttribute("user");
+        item.setUser(user);
         Item itemFromDb = itemDao.insert(item);
         ServletActionContext.getRequest().setAttribute("flash.item", itemFromDb);
         return SUCCESS;
 //        }
-
-//        return LOGIN;
     }
 
     @Override

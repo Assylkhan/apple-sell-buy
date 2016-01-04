@@ -14,6 +14,11 @@
         <property name="password" value="admin"/>
     </bean>
 
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
     <context:component-scan base-package="com.milman"/>
     <bean id="loginActionBean" class="com.milman.action.LoginAction">
         <property name="userDao" ref="userDao"/>
@@ -44,6 +49,7 @@
 
     <bean id="itemDao" class="com.milman.dataSource.PostgresImpl.ItemDaoImpl">
         <property name="dataSource" ref="dataSource"></property>
+        <property name="transactionManager" ref="transactionManager"/>
     </bean>
 
     <bean id="user" class="com.milman.entity.User"/>

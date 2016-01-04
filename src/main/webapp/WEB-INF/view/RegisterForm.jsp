@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<t:genericPage title="Spring and Struts Integration">
+<t:genericPage title="registration">
     <div align="center">
         <h1>Spring and Struts Integration</h1>
 

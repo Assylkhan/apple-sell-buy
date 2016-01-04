@@ -1,6 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<t:genericPage title="profile">
+<t:genericPage title="item">
   <div align="center">
     <h1>${item.name}</h1>
 
@@ -14,6 +14,7 @@
     <%--<s:a href="%{userItemAction}">--%>
       <%--${item.name}--%>
     <%--</s:a>--%>
+    <a href="<c:url value='/editItem'/>">edit</a>
     <a class="btn btn-default" href="">change</a>
   </div>
 </t:genericPage>

@@ -33,8 +33,13 @@ public class LoginAction extends ActionSupport implements Preparable {
 
     public String execute() {
 //        if (userDao.checkLogin(user)) {
+//        validate();
         String generatedPassword = HashGenerator.passwordToHash(user.getPassword());
         User userFromDb = userDao.findByCredentials(user.getEmail(), generatedPassword);
+        if (userFromDb == null) {
+            ServletActionContext.getRequest().setAttribute("noSuchUser", "there is no such user!");
+            return INPUT;
+        }
         ServletActionContext.getRequest().getSession().setAttribute("user", userFromDb);
         return SUCCESS;
 //        }

@@ -2,6 +2,7 @@ package com.milman.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Item extends BaseEntity implements Serializable {
@@ -10,7 +11,7 @@ public class Item extends BaseEntity implements Serializable {
     private Date publicationDate;
     private String region;
     private String description;
-    private List<Media> mediasForItem;
+    private List<Media> mediasForItem = new ArrayList<>();
     private Byte viewsAmount;
     private User user;
 
