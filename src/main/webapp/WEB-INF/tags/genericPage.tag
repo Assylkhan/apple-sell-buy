@@ -1,6 +1,7 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@attribute name="title" required="true" %>
 <html>
 <head>
@@ -8,8 +9,9 @@
     <link rel="stylesheet" href='<c:url value="/webjars/bootstrap/3.3.5/css/bootstrap.css"/>'>
     <script src='<c:url value="/webjars/jquery/2.1.4/jquery.js"/>'></script>
     <script src='<c:url value="/webjars/bootstrap/3.3.5/js/bootstrap.js"/>'></script>
-    <script type="text/javascript" src='<c:url value="/static/javascript/application.js"/>'></script>
-    <link rel="stylesheet" href="/static/css/main.css">
+    <script src="<c:url value='/static/js/application.js'/>"></script>
+
+    <%--<link rel="stylesheet" href="<c:url value='/static/css/main.css'/>" type="text/css" media="all">--%>
     <%--<link rel="icon" href='<c:url value="/static/image/logoTitle.ico"/>' type="image/x-icon">--%>
     <title>${title}</title>
 </head>

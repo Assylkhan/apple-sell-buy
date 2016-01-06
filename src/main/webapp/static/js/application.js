@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    alert("yeeah!")
+    alert("yeeah!");
     function createNewImageRow(lastImageIndex) {
         var currentImageIndex = lastImageIndex + 1
         var imageContent = "<div class='row' id='image-'" + currentImageIndex + "'>" +
@@ -11,15 +11,14 @@ $(document).ready(function () {
         "</div></div>"
     }
 
-    $(document).on("click", "#addMoreImage", function () {
+    $(document).on("click", "button#addMoreImage", function () {
         //var lastId = $("#images").last().attr('id');
         //if (lastId != "") {
         //    lastId = lastId.replace("image-", "")
         //}
         $("#alert").appendData("yeeah")
-        alert("lastId: ");
+        alert("lastId: ")
     });
-
 
     /*$(document).on("click", "#next", function () {
         var pageNumber = $("#orders>tbody").attr('id').match(/page_(\d+)/)[1];

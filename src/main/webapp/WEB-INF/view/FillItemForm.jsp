@@ -1,12 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <t:genericPage title="new item">
     <div align="center">
         <h1>Spring and Struts Integration</h1>
 
         <h2>Users Login</h2>
+
         <h1 id="alert"></h1>
         <s:actionerror/>
 
@@ -59,5 +60,6 @@
             </div>
             <button id="addMoreImage" type="button">add more image</button>
             <button type="submit">save</button>
+        </form>
     </div>
 </t:genericPage>

@@ -8,7 +8,8 @@
 
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
     <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
-    <constant name="struts.action.extension" value=""/>
+    <constant name="struts.action.excludePattern" value="/static/.*"/>
+    <!--<constant name="struts.action.extension" value=""/>-->
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <!-- devMode is helpful when you want some extra logs for debugging -->
     <constant name="struts.devMode" value="true" />
