@@ -8,6 +8,7 @@ import com.opensymphony.xwork2.Preparable;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.net.URL;
 import java.util.List;
 
 public class UserItemsAction extends ActionSupport implements Preparable {
@@ -39,6 +40,8 @@ public class UserItemsAction extends ActionSupport implements Preparable {
         if (currentUser != null) {
             setItems(itemDao.fetchListByUserId(currentUser.getId()));
         }
+        URL resource1 = ServletActionContext.getRequest().getClass().getResource("/10.png");
+        ServletActionContext.getRequest().setAttribute("image", resource1);
         return SUCCESS;
     }
 

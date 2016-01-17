@@ -23,6 +23,8 @@ import java.util.Map;
 
 public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
 
+    private final String MEDIAS_BY_ITEM_ID = "SELECT * FROM media_for_item WHERE item_id=?";
+
     private PlatformTransactionManager transactionManager;
 
     public void setTransactionManager(PlatformTransactionManager txManager) {
@@ -93,7 +95,9 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
     @Override
     public Item fetchById(Long id) {
         final String SQL = "SELECT * FROM ITEMS WHERE id=?";
-        return getJdbcTemplate().queryForObject(SQL, new Object[]{id}, new ItemMapper());
+        Item item = getJdbcTemplate().queryForObject(SQL, new Object[]{id}, new ItemMapper());
+        item.setMediasForItem(getJdbcTemplate().query(MEDIAS_BY_ITEM_ID, new Object[]{item.getId()}, new MediaMapper()));
+        return item;
     }
 
     @Override
@@ -102,12 +106,19 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
     }
 
     @Override
+    public Item fetchLast() {
+        final String SQL = "SELECT * FROM ITEMS ORDER BY ID DESC LIMIT 1";
+        Item item = getJdbcTemplate().queryForObject(SQL, new ItemMapper());
+        item.setMediasForItem(getJdbcTemplate().query(MEDIAS_BY_ITEM_ID, new Object[]{item.getId()}, new MediaMapper()));
+        return item;
+    }
+
+    @Override
     public List<Item> fetchListByUserId(Long userId) {
         final String SQL = "SELECT * FROM ITEMS WHERE user_id=?";
-        final String MEDIAS_SQL = "SELECT * FROM media_for_item WHERE item_id=?";
         List<Item> items = getJdbcTemplate().query(SQL, new Object[]{userId}, new ItemMapper());
         for (Item item : items) {
-            item.setMediasForItem(getJdbcTemplate().query(MEDIAS_SQL, new Object[]{item.getId()}, new MediaMapper()));
+            item.setMediasForItem(getJdbcTemplate().query(MEDIAS_BY_ITEM_ID, new Object[]{item.getId()}, new MediaMapper()));
         }
         return items;
     }

@@ -6,12 +6,13 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <%--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">--%>
     <link rel="stylesheet" href='<c:url value="/webjars/bootstrap/3.3.5/css/bootstrap.css"/>'>
     <script src='<c:url value="/webjars/jquery/2.1.4/jquery.js"/>'></script>
     <script src='<c:url value="/webjars/bootstrap/3.3.5/js/bootstrap.js"/>'></script>
     <script src="<c:url value='/static/js/application.js'/>"></script>
 
-    <%--<link rel="stylesheet" href="<c:url value='/static/css/main.css'/>" type="text/css" media="all">--%>
+    <link rel="stylesheet" href="<c:url value='/static/css/main.css'/>" type="text/css">
     <%--<link rel="icon" href='<c:url value="/static/image/logoTitle.ico"/>' type="image/x-icon">--%>
     <title>${title}</title>
 </head>
@@ -39,10 +40,8 @@
     </div>
 </header>
 
-<div id="wrapper" class="row">
-    <div class="content">
-        <jsp:doBody/>
-    </div>
+<div class="content">
+    <jsp:doBody/>
 </div>
 <%--<div class="push"></div>--%>
 <footer class="footer">

@@ -1,23 +1,25 @@
 $(document).ready(function () {
-    alert("yeeah!");
+
     function createNewImageRow(lastImageIndex) {
-        var currentImageIndex = lastImageIndex + 1
-        var imageContent = "<div class='row' id='image-'" + currentImageIndex + "'>" +
-        "<div class='form-group col-xs-12'>" +
-        "<label class='label' for='item_image-" + currentImageIndex + "'>item image:</label>" +
-        "<input type='file' value='' id='item_image-" + currentImageIndex + "'" +
-        "class='form-control' name='medias[" + currentImageIndex + "].mediaRef'>" +
-        "<input type='hidden' name='medias[" + currentImageIndex + "].type' value='image'/>" +
+        var currentImageIndex = parseInt(lastImageIndex) + 1
+        var imageContent = "<div class='row' id='image-" + currentImageIndex + "'>" +
+        "<div class='horizontalCenter form-group col-xs-5'>" +
+        "<label for='item_image-" + currentImageIndex + "'>item image:</label>" +
+        "<input type='file' id='item_image-" + currentImageIndex + "' " +
+        "name='fileUpload'>" +
+        "<input type='hidden' name='mediaTypes' value='IMAGE'/>" +
         "</div></div>"
+        return imageContent
     }
 
     $(document).on("click", "button#addMoreImage", function () {
-        //var lastId = $("#images").last().attr('id');
-        //if (lastId != "") {
-        //    lastId = lastId.replace("image-", "")
-        //}
-        $("#alert").appendData("yeeah")
-        alert("lastId: ")
+        var lastId = $("#images").children().last().attr('id');
+        if (lastId != "") {
+            lastId = lastId.replace("image-", "")
+        }
+        var imageRow = createNewImageRow(lastId)
+        $("#images").append(imageRow)
+        //$("#alert").appendData("yeeah")
     });
 
     /*$(document).on("click", "#next", function () {

@@ -1,7 +1,37 @@
 /** {*/
     /*font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
 /*}*/
+html, body {
+    margin: 0;
+}
 
+body {
+    padding: 0px 10px;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/*#wrapper {*/
+    /*padding: 5px 10px;*/
+/*}*/
 h1 {
     color: red !important;
 }
+
+.horizontalCenter {
+    margin: auto;
+    float: none;
+}
+
+#postItem > .row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*.form-group {*/
+    /*margin-top: 10px;*/
+    /*margin-bottom: 10px;*/
+/*}*/
