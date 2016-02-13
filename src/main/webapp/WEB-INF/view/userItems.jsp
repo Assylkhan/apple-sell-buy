@@ -8,7 +8,7 @@
         <c:forEach items="${items}" var="item">
             <li class="row" style="background: greenyellow;">
                 <div class="col-md-3">
-                    <img src="${empty item.mediasForItem ? "/static/image/macBook.jpg" : item.mediasForItem[0].mediaRef}">
+                    <img style="height: 100px; width: 120px" src="${empty item.mediasForItem ? "/static/image/macBook.jpg" : item.mediasForItem[0].mediaRef}">
                 </div>
                 <div class="col-md-6">
                     <div class="row">

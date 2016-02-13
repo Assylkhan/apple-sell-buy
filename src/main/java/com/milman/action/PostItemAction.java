@@ -53,8 +53,8 @@ public class PostItemAction extends ActionSupport implements Preparable, Servlet
     private String saveDirectory;
 
     public String doUpload() {
-        createMediasFromRequest();
         user = UserUtil.getSessionUser();
+        createMediasFromRequest();
         item.setUser(user);
         item.setMediasForItem(medias);
         Item itemFromDb = itemDao.insert(item);
@@ -71,7 +71,7 @@ public class PostItemAction extends ActionSupport implements Preparable, Servlet
         for (int i = 0; i < fileUpload.size(); i++) {
             File uploadedFile = fileUpload.get(i);
             String fileName = fileUploadFileName.get(i);
-            String relativePath = itemPath + mediaTypes.get(i);
+            String relativePath = itemPath + mediaTypes.get(i) + "/" + fileName;
             String absolutePath = absolutePathUntilItem + mediaTypes.get(i);
             Media media = new Media();
             media.setMediaRef(relativePath);
