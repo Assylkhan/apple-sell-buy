@@ -1,16 +1,17 @@
 package com.milman.dataSource.mappers;
 
+import com.milman.entity.ItemImage;
 import com.milman.entity.Media;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MediaMapper implements RowMapper<Media> {
+public class MediaMapper implements RowMapper<ItemImage> {
 
     @Override
-    public Media mapRow(ResultSet resultSet, int i) throws SQLException {
-        Media media = new Media();
+    public ItemImage mapRow(ResultSet resultSet, int i) throws SQLException {
+        ItemImage media = new ItemImage();
         media.setId(resultSet.getLong("id"));
         media.setMediaType(
                 Media.MediaType.typeFromInt(resultSet.getInt("media_type_id")));

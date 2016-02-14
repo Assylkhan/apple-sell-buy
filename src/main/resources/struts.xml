@@ -57,8 +57,11 @@
         <action name="fillItem">
             <result>/WEB-INF/view/FillItemForm.jsp</result>
         </action>
-        <!--image/png,image/gif,image/jpeg,image/jpg-->
 
+        <action name="editItem" class="com.milman.action.EditItemAction">
+            <result name="success">/WEB-INF/view/FillItemForm.jsp</result>
+        </action>
+        <!--image/png,image/gif,image/jpeg,image/jpg-->
 
         <action name="postItem" class="com.milman.action.PostItemAction"
                 method="doUpload">
@@ -81,6 +84,26 @@
 
         </action>
 
+        <action name="updateItem" class="com.milman.action.UpdateItemAction"
+                method="doUpload">
+            <interceptor-ref name="defaultStack"/>
+            <!--<param name="saveDirectory">D:/Test/Upload</param>-->
+
+            <interceptor-ref name="fileUpload">
+                <param name="allowedTypes">*/*</param>
+                <param name="maximumSize">4194304</param>
+                <!-- 4MB -->
+            </interceptor-ref>
+
+
+            <!--<result name="success" type="redirect">/result.jsp</result>-->
+            <result name="success" type="redirectAction">
+                <param name="actionName">userItems</param>
+            </result>
+            <result name="input">WEB-INF/view/FillItemForm.jsp</result>
+            <!--<result name="input">/upload.jsp</result>-->
+
+        </action>
         <!--<action name="uploadFile" class="com.milman.action.PostItemAction" method="doUpload">-->
         <!--<interceptor-ref name="fileUpload">-->
         <!--<param name="maximumSize">4194304</param>-->

@@ -41,7 +41,7 @@ public class SecurityFilter implements Filter {
                 return;
             }
         } else for (String deniedUrl : deniedUrls) {
-            if (requestUri.equals(deniedUrl)) {
+            if (requestUri.startsWith(deniedUrl)) {
                 resp.sendRedirect(req.getContextPath() + "/login");
                 return;
             }

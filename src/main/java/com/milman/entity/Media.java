@@ -1,6 +1,6 @@
 package com.milman.entity;
 
-public class Media extends BaseEntity {
+public abstract class Media extends BaseEntity {
     public enum MediaType {
         IMAGE, VIDEO;
 

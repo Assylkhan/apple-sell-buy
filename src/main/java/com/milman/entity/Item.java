@@ -11,7 +11,8 @@ public class Item extends BaseEntity implements Serializable {
     private Date publicationDate;
     private String region;
     private String description;
-    private List<Media> mediasForItem = new ArrayList<>();
+    private List<ItemImage> itemImages = new ArrayList<>();
+    private List<ItemVideo> itemVideos = new ArrayList<>();
     private Byte viewsAmount;
     private User user;
 
@@ -55,12 +56,20 @@ public class Item extends BaseEntity implements Serializable {
         this.description = description;
     }
 
-    public List<Media> getMediasForItem() {
-        return mediasForItem;
+    public List<ItemImage> getItemImages() {
+        return itemImages;
     }
 
-    public void setMediasForItem(List<Media> mediasForItem) {
-        this.mediasForItem = mediasForItem;
+    public void setItemImages(List<ItemImage> itemImages) {
+        this.itemImages = itemImages;
+    }
+
+    public List<ItemVideo> getItemVideos() {
+        return itemVideos;
+    }
+
+    public void setItemVideos(List<ItemVideo> itemVideos) {
+        this.itemVideos = itemVideos;
     }
 
     public Byte getViewsAmount() {

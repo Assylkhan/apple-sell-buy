@@ -5,16 +5,15 @@ import com.milman.entity.Item;
 import com.milman.entity.User;
 import com.milman.util.UserUtil;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.Preparable;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpServletRequest;
 
-import java.util.List;
-
-public class UserItemAction  extends ActionSupport implements Preparable {
-
+public class EditItemAction extends ActionSupport {
     @Autowired
     private ItemDao itemDao;
+    private Item item;
+    private HttpServletRequest servletRequest;
 
     public ItemDao getItemDao() {
         return itemDao;
@@ -24,8 +23,6 @@ public class UserItemAction  extends ActionSupport implements Preparable {
         this.itemDao = itemDao;
     }
 
-    private Item item;
-
     public Item getItem() {
         return item;
     }
@@ -34,19 +31,21 @@ public class UserItemAction  extends ActionSupport implements Preparable {
         this.item = item;
     }
 
-    public String execute() {
+    public HttpServletRequest getServletRequest() {
+        return servletRequest;
+    }
+
+    public void setServletRequest(HttpServletRequest servletRequest) {
+        this.servletRequest = servletRequest;
+    }
+
+    @Override
+    public String execute() throws Exception {
         User currentUser = UserUtil.getSessionUser();
-        String id = ServletActionContext.getRequest().getParameter("id");
-        System.out.println(id);
         Long itemId = Long.valueOf(ServletActionContext.getRequest().getParameter("id"));
         if (currentUser != null) {
             setItem(itemDao.fetchById(itemId));
         }
         return SUCCESS;
-    }
-
-    @Override
-    public void prepare() throws Exception {
-
     }
 }

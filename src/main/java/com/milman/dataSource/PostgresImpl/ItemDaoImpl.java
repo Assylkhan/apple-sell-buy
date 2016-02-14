@@ -4,6 +4,7 @@ import com.milman.dataSource.ItemDao;
 import com.milman.dataSource.mappers.ItemMapper;
 import com.milman.dataSource.mappers.MediaMapper;
 import com.milman.entity.Item;
+import com.milman.entity.ItemImage;
 import com.milman.entity.Media;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -58,12 +59,12 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
             item.setId(id);
 
 //        insert mediasForItem
-            if (!item.getMediasForItem().isEmpty()) {
+            if (!item.getItemImages().isEmpty()) {
                 final String INSERT_MEDIA_SQL = "INSERT INTO media_for_item " +
                         "(description, media_ref, media_type_id, item_id) " +
                         "VALUES (?, ?, ?, ?)";
-                List<Media> insertedMedias = new ArrayList<>();
-                for (Media media : item.getMediasForItem()) {
+                List<ItemImage> insertedImages = new ArrayList<>();
+                for (ItemImage media : item.getItemImages()) {
 
                     getJdbcTemplate().update(
                             new PreparedStatementCreator() {
@@ -80,9 +81,9 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
                             keyHolder);
                     Long mediaId = keyHolder.getKey().longValue();
                     media.setId(mediaId);
-                    insertedMedias.add(media);
+                    insertedImages.add(media);
                 }
-                item.setMediasForItem(insertedMedias);
+                item.setItemImages(insertedImages);
             }
             transactionManager.commit(txStatus);
         } catch (Exception e) {
@@ -96,7 +97,7 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
     public Item fetchById(Long id) {
         final String SQL = "SELECT * FROM ITEMS WHERE id=?";
         Item item = getJdbcTemplate().queryForObject(SQL, new Object[]{id}, new ItemMapper());
-        item.setMediasForItem(getJdbcTemplate().query(MEDIAS_BY_ITEM_ID, new Object[]{item.getId()}, new MediaMapper()));
+        item.setItemImages(getJdbcTemplate().query(MEDIAS_BY_ITEM_ID, new Object[]{item.getId()}, new MediaMapper()));
         return item;
     }
 
@@ -109,7 +110,7 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
     public Item fetchLast() {
         final String SQL = "SELECT * FROM ITEMS ORDER BY ID DESC LIMIT 1";
         Item item = getJdbcTemplate().queryForObject(SQL, new ItemMapper());
-        item.setMediasForItem(getJdbcTemplate().query(MEDIAS_BY_ITEM_ID, new Object[]{item.getId()}, new MediaMapper()));
+        item.setItemImages(getJdbcTemplate().query(MEDIAS_BY_ITEM_ID, new Object[]{item.getId()}, new MediaMapper()));
         return item;
     }
 
@@ -118,7 +119,7 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
         final String SQL = "SELECT * FROM ITEMS WHERE user_id=?";
         List<Item> items = getJdbcTemplate().query(SQL, new Object[]{userId}, new ItemMapper());
         for (Item item : items) {
-            item.setMediasForItem(getJdbcTemplate().query(MEDIAS_BY_ITEM_ID, new Object[]{item.getId()}, new MediaMapper()));
+            item.setItemImages(getJdbcTemplate().query(MEDIAS_BY_ITEM_ID, new Object[]{item.getId()}, new MediaMapper()));
         }
         return items;
     }

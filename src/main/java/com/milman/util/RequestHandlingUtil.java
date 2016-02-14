@@ -1,5 +1,6 @@
 package com.milman.util;
 
+import com.milman.entity.ItemImage;
 import com.milman.entity.Media;
 
 import javax.servlet.ServletException;
@@ -40,7 +41,7 @@ public class RequestHandlingUtil {
                         InputStream inputStream = part.getInputStream();
                         byte[] bytes = new byte[size];
                         inputStream.read(bytes);
-                        Media media = new Media();
+                        Media media = new ItemImage();
                         media.setMediaRef(filename);
                         media.setContent(bytes);
                         return media;
