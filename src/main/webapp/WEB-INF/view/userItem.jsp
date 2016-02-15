@@ -12,24 +12,21 @@
         <div>
             <p>Видео</p>
             <ul>
-                <c:forEach items="${item.mediasForItem}" var="media">
-                    <c:if test="${media.mediaType == 'IMAGE'}">
-                        <li style="border-bottom: solid 1px; border-top: solid 1px;">
-                            <img style="height: 200px; width: 340px" src="${media.mediaRef}">
-                        </li>
-                    </c:if>
+                <c:forEach items="${item.itemVideos}" var="itemVideo">
+                    <li style="border-bottom: solid 1px; border-top: solid 1px;">
+                        <p>${itemVideo.mediaRef}</p>
+                            <%--<img style="height: 200px; width: 340px" src="${itemVideo.mediaRef}">--%>
+                    </li>
                 </c:forEach>
             </ul>
         </div>
         <div>
             <p>Картинки</p>
             <ul>
-                <c:forEach items="${item.mediasForItem}" var="media">
-                    <c:if test="${media.mediaType == 'VIDEO'}">
-                        <li>
-                            <img src="${media.mediaRef}">
-                        </li>
-                    </c:if>
+                <c:forEach items="${item.itemImages}" var="itemImage">
+                    <li>
+                        <img src="${itemImage.mediaRef}">
+                    </li>
                 </c:forEach>
             </ul>
         </div>
@@ -42,6 +39,6 @@
         <a href="<c:url value='/editItem'>
             <c:param name="id" value="${item.id}"/>
         </c:url>">edit</a>
-        <%--<a class="btn btn-default" href="">change</a>--%>
+            <%--<a class="btn btn-default" href="">change</a>--%>
     </div>
 </t:genericPage>

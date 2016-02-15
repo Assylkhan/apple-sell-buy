@@ -51,28 +51,28 @@
                 </div>
             </div>
             <div class="row" id="images">
-                <c:set var="first_item_image_id" value="item_image-0"/>
-                <c:choose>
-                    <c:when test="${empty item}">
-                        <div class="row" id="image-0">
+            <c:set var="first_item_image_id" value="item_image-0"/>
+            <c:choose>
+                <c:when test="${empty item}">
+                    <div class="row" id="image-0">
+                        <div class="horizontalCenter form-group col-xs-5">
+                            <label for="${first_item_image_id}">item image:</label>
+                            <input id="${first_item_image_id}" value=""
+                                   type="file" name="imageUpload">
+                            <input type="hidden" name="mediaTypes" value="IMAGE"/>
+                        </div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach items="${item.itemImages}" var="image" step="step">
+                        <div class="row" id="image-${step - 1}">
                             <div class="horizontalCenter form-group col-xs-5">
                                 <label for="${first_item_image_id}">item image:</label>
-                                <input id="${first_item_image_id}" value=""
+                                <input id="${first_item_image_id}" value="<c:url value='${image.mediaRef}'/>"
                                        type="file" name="imageUpload">
                                 <input type="hidden" name="mediaTypes" value="IMAGE"/>
                             </div>
                         </div>
-                    </c:when>
-                    <c:otherwise>
-                        <c:forEach items="${item.itemImages}" var="image" step="step">
-                            <div class="row" id="image-${step - 1}">
-                                <div class="horizontalCenter form-group col-xs-5">
-                                    <label for="${first_item_image_id}">item image:</label>
-                                    <input id="${first_item_image_id}" value="<c:url value='${image.mediaRef}'/>"
-                                           type="file" name="imageUpload">
-                                    <input type="hidden" name="mediaTypes" value="IMAGE"/>
-                                </div>
-                            </div>
                         </c:forEach>
                     </c:otherwise>
                 </c:choose>

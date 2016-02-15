@@ -9,8 +9,6 @@ import com.opensymphony.xwork2.Preparable;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
-
 public class UserItemAction  extends ActionSupport implements Preparable {
 
     @Autowired
