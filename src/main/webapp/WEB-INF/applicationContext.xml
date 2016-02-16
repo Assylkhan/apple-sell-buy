@@ -20,11 +20,8 @@
     </bean>
 
     <context:component-scan base-package="com.milman"/>
-    <bean id="loginActionBean" class="com.milman.action.LoginAction">
+    <bean id="loginActionBean" class="com.milman.action.AuthenticationAction">
         <property name="userDao" ref="userDao"/>
-    </bean>
-
-    <bean id="logoutActionBean" class="com.milman.action.LogoutAction">
     </bean>
 
     <bean id="registerActionBean" class="com.milman.action.RegistrationAction">
@@ -35,9 +32,9 @@
         <property name="user" ref="user"/>
     </bean>
 
-    <bean id="userItemsActionBean" class="com.milman.action.UserItemsAction">
-        <property name="itemDao" ref="itemDao"/>
-    </bean>
+    <!--<bean id="userItemsActionBean" class="com.milman.action.UserItemsAction">-->
+        <!--<property name="itemDao" ref="itemDao"/>-->
+    <!--</bean>-->
 
     <bean id="userItemActionBean" class="com.milman.action.UserItemAction">
         <property name="itemDao" ref="itemDao"/>

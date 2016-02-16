@@ -1,6 +1,5 @@
 package com.milman.dataSource.mappers;
 
-import com.milman.entity.ItemImage;
 import com.milman.entity.ItemVideo;
 import com.milman.entity.Media;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,8 +13,7 @@ public class VideoMapper implements RowMapper<ItemVideo> {
     public ItemVideo mapRow(ResultSet resultSet, int i) throws SQLException {
         ItemVideo itemVideo = new ItemVideo();
         itemVideo.setId(resultSet.getLong("id"));
-        itemVideo.setMediaType(
-                Media.MediaType.typeFromInt(resultSet.getInt("media_type_id")));
+        itemVideo.setMediaType(Media.MediaType.VIDEO);
         itemVideo.setDescription(resultSet.getString("description"));
         itemVideo.setMediaRef(resultSet.getString("media_ref"));
         return itemVideo;

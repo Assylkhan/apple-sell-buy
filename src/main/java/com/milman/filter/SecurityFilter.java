@@ -19,7 +19,7 @@ public class SecurityFilter implements Filter {
         deniedUrls.add("/fillItem");
         deniedUrls.add("/postItem");
         deniedUrls.add("/userItems");
-        deniedUrls.add("/userItem");
+//        deniedUrls.add("/userItem");
     }
 
     @Override

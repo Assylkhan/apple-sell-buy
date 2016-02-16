@@ -36,9 +36,19 @@
             <%--<s:a href="%{userItemAction}">--%>
             <%--${item.name}--%>
             <%--</s:a>--%>
-        <a href="<c:url value='/editItem'>
+        <c:if test="${not empty user}">
+            <p>
+                <a href="<c:url value='/editItem'>
             <c:param name="id" value="${item.id}"/>
-        </c:url>">edit</a>
+            </c:url>">
+                    edit</a>
+                <a href="<c:url value='/deleteMyItem'>
+            <c:param name="id" value="${item.id}"/>
+            </c:url>">
+                    delete
+                </a>
+            </p>
+        </c:if>
             <%--<a class="btn btn-default" href="">change</a>--%>
     </div>
 </t:genericPage>

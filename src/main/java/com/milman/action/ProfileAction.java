@@ -2,7 +2,6 @@ package com.milman.action;
 
 import com.milman.entity.User;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public class ProfileAction extends ActionSupport {
     private User user;

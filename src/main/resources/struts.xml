@@ -26,14 +26,14 @@
             <result>/WEB-INF/view/LoginForm.jsp</result>
         </action>
 
-        <action name="loginProcess" class="com.milman.action.LoginAction">
+        <action name="loginProcess" class="com.milman.action.AuthenticationAction" method="login">
             <result name="success" type="redirectAction">
                 <param name="actionName">userItems</param>
             </result>
             <result name="input">/WEB-INF/view/LoginForm.jsp</result>
         </action>
 
-        <action name="logout" class="com.milman.action.LogoutAction">
+        <action name="logout" class="com.milman.action.AuthenticationAction" method="logOut">
             <result name="success" type="redirectAction">
                 <param name="actionName">login</param>
             </result>
@@ -63,7 +63,7 @@
         </action>
         <!--image/png,image/gif,image/jpeg,image/jpg-->
 
-        <action name="postItem" class="com.milman.action.PostItemAction"
+        <action name="postItem" class="com.milman.action.ItemChangeAction"
                 method="doUpload">
             <interceptor-ref name="defaultStack"/>
             <!--<param name="saveDirectory">D:/Test/Upload</param>-->
@@ -84,7 +84,7 @@
 
         </action>
 
-        <action name="updateItem" class="com.milman.action.UpdateItemAction"
+        <action name="updateItem" class="com.milman.action.ItemChangeAction"
                 method="doUpload">
             <interceptor-ref name="defaultStack"/>
             <!--<param name="saveDirectory">D:/Test/Upload</param>-->
@@ -116,11 +116,25 @@
         <!--<result name="input">WEB-INF/view/FillItemForm.jsp</result>-->
         <!--</action>-->
 
-        <action name="userItems" class="com.milman.action.UserItemsAction">
+        <action name="items" class="com.milman.action.ItemsAction" method="execute">
+            <result name="success">
+                /WEB-INF/view/items.jsp
+            </result>
+        </action>
+
+        <action name="userItems" class="com.milman.action.ItemsAction" method="userItems">
             <result name="success">
                 /WEB-INF/view/userItems.jsp
             </result>
         </action>
+
+        <action name="deleteMyItem" class="com.milman.action.UserItemAction" method="deleteMyItem">
+            <result type="redirectAction" name="success">
+                <param name="actionName">userItems</param>
+            </result>
+        </action>
+
+
 
         <action name="userItem" class="com.milman.action.UserItemAction">
             <result name="success">

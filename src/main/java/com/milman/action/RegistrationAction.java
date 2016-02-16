@@ -32,14 +32,10 @@ public class RegistrationAction extends ActionSupport implements Preparable {
     }
 
     public String execute() {
-//        if (userDao.checkLogin(user)) {
         user.setPassword(HashGenerator.passwordToHash(user.getPassword()));
         User userFromDb = userDao.insert(user);
         ServletActionContext.getRequest().getSession().setAttribute("user", userFromDb);
         return SUCCESS;
-//        }
-
-//        return LOGIN;
     }
 
     @Override

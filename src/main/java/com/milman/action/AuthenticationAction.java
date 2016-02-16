@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.Preparable;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class LoginAction extends ActionSupport implements Preparable {
+public class AuthenticationAction extends ActionSupport implements Preparable {
     //UserDao injected by spring context; This is cool !!
     @Autowired
     private UserDao userDao;
@@ -31,7 +31,7 @@ public class LoginAction extends ActionSupport implements Preparable {
         return user;
     }
 
-    public String execute() {
+    public String login() {
 //        if (userDao.checkLogin(user)) {
 //        validate();
         String generatedPassword = HashGenerator.passwordToHash(user.getPassword());
@@ -45,6 +45,11 @@ public class LoginAction extends ActionSupport implements Preparable {
 //        }
 
 //        return LOGIN;
+    }
+
+    public String logOut(){
+        ServletActionContext.getRequest().getSession().invalidate();
+        return SUCCESS;
     }
 
     @Override

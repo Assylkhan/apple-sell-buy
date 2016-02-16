@@ -19,6 +19,9 @@
 <body>
 <header class="header">
     <div class="navbar">
+        <ul class="list-unstyled pull-left">
+            <li><a href="<c:url value='/items'/>">home</a></li>
+        </ul>
         <ul class="list-unstyled pull-right">
             <c:choose>
                 <c:when test="${not empty sessionScope.user}">

@@ -36,7 +36,7 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
     public Item insert(Item item) {
 //        insert item
         final String SQL = "INSERT INTO ITEMS " +
-                "(name, price, description, user_id) " +
+                "(item_name, price, description, user_id) " +
                 "VALUES (?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         TransactionDefinition txDef = new DefaultTransactionDefinition();
@@ -72,8 +72,8 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
     private void insertMedias(Media.MediaType mediaType, Item item, KeyHolder keyHolder) {
         String tableName = mediaType == Media.MediaType.IMAGE ? "item_images" : "item_videos";
         final String INSERT_MEDIA_SQL = "INSERT INTO " + tableName +
-                "(description, media_ref, media_type_id, item_id) " +
-                "VALUES (?, ?, ?, ?)";
+                " (description, media_ref, item_id) " +
+                "VALUES (?, ?, ?)";
         List<? extends Media> insertedImages = mediaType == Media.MediaType.IMAGE
                 ? item.getItemImages() : item.getItemVideos();
         for (Media media : insertedImages) {
@@ -84,8 +84,7 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
                                     con.prepareStatement(INSERT_MEDIA_SQL, new String[]{"id"});
                             pst.setString(1, media.getDescription());
                             pst.setString(2, media.getMediaRef());
-                            pst.setInt(3, media.getMediaType().getTypeId());
-                            pst.setLong(4, item.getId());
+                            pst.setLong(3, item.getId());
                             return pst;
                         }
                     },
@@ -117,9 +116,41 @@ public class ItemDaoImpl extends JdbcDaoSupport implements ItemDao {
     }
 
     @Override
+    public void deleteById(Long id) {
+//        todo: item_id on delete cascade
+        final String SQL = "DELETE FROM ITEMS WHERE ID=?";
+        getJdbcTemplate().update(SQL, id);
+    }
+
+    @Override
+    public List<Item> fetchList() {
+        final String SQL = "SELECT * FROM ITEMS";
+        List<Item> items = getJdbcTemplate().query(SQL, new Object[]{}, new ItemMapper());
+        for (Item item : items) {
+            setMediasToItem(item);
+        }
+        return items;
+    }
+
+    @Override
     public List<Item> fetchListByUserId(Long userId) {
         final String SQL = "SELECT * FROM ITEMS WHERE user_id=?";
         List<Item> items = getJdbcTemplate().query(SQL, new Object[]{userId}, new ItemMapper());
+        for (Item item : items) {
+            setMediasToItem(item);
+        }
+        return items;
+    }
+
+    @Override
+    public List<Item> fetchByName(String name) {
+        final String SQL = "SELECT * FROM ITEMS WHERE item_name like '%' || ? || '%'";
+//        name = name
+//                .replace("!", "!!")
+//                .replace("%", "!%")
+//                .replace("_", "!_")
+//                .replace("[", "![");
+        List<Item> items = getJdbcTemplate().query(SQL, new Object[]{name}, new ItemMapper());
         for (Item item : items) {
             setMediasToItem(item);
         }

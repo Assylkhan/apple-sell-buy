@@ -2,11 +2,12 @@ $(document).ready(function () {
 
     function createNewImageRow(lastImageIndex) {
         var currentImageIndex = parseInt(lastImageIndex) + 1
+
         var imageContent = "<div class='row' id='image-" + currentImageIndex + "'>" +
         "<div class='horizontalCenter form-group col-xs-5'>" +
         "<label for='item_image-" + currentImageIndex + "'>item image:</label>" +
         "<input type='file' id='item_image-" + currentImageIndex + "' " +
-        "name='fileUpload'>" +
+        "name='imageUpload'>" +
         "<input type='hidden' name='mediaTypes' value='IMAGE'/>" +
         "</div></div>"
         return imageContent

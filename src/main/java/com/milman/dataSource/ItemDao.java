@@ -10,5 +10,8 @@ public interface ItemDao {
     public Item fetchById(Long id);
     public Item fetchByParams(Map<String, Object> params);
     public Item fetchLast();
+    public void deleteById(Long id);
+    public List<Item> fetchList();
     public List<Item> fetchListByUserId(Long userId);
+    public List<Item> fetchByName(String name);
 }

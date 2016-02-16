@@ -11,7 +11,7 @@ public class ItemMapper implements RowMapper<Item> {
     public Item mapRow(ResultSet resultSet, int i) throws SQLException {
         Item item = new Item();
         item.setId(resultSet.getLong("id"));
-        item.setName(resultSet.getString("name"));
+        item.setName(resultSet.getString("item_name"));
         item.setDescription(resultSet.getString("description"));
         item.setPrice(resultSet.getString("price"));
         item.setPublicationDate(resultSet.getDate("publication_date"));

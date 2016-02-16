@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.Preparable;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class UserItemAction  extends ActionSupport implements Preparable {
+public class UserItemAction extends ActionSupport implements Preparable {
 
     @Autowired
     private ItemDao itemDao;
@@ -37,8 +37,15 @@ public class UserItemAction  extends ActionSupport implements Preparable {
         String id = ServletActionContext.getRequest().getParameter("id");
         System.out.println(id);
         Long itemId = Long.valueOf(ServletActionContext.getRequest().getParameter("id"));
+        setItem(itemDao.fetchById(itemId));
+        return SUCCESS;
+    }
+
+    public String deleteMyItem() {
+        User currentUser = UserUtil.getSessionUser();
         if (currentUser != null) {
-            setItem(itemDao.fetchById(itemId));
+            String itemId = ServletActionContext.getRequest().getParameter("id");
+            itemDao.deleteById(new Long(itemId));
         }
         return SUCCESS;
     }
